@@ -27,7 +27,7 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
+# gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
@@ -70,6 +70,9 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner-active_record'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end
+
+gem 'active_model_serializers'
