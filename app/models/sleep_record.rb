@@ -3,6 +3,8 @@
 class SleepRecord < ApplicationRecord
   belongs_to :user
 
+  validates :bed_time, presence: true
+
   scope :ordered_by_created_time, -> { order(created_at: :asc) }
   scope :from_previous_week, -> { where('bed_time > ?', 1.week.ago.beginning_of_day) }
 
