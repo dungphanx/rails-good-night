@@ -1,8 +1,19 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+# Create users
+user1 = User.create(name: 'John')
+user2 = User.create(name: 'Jane')
+user3 = User.create(name: 'Alice')
+
+# Create sleep records
+SleepRecord.create(user: user1, bed_time: Time.new(2023, 7, 1, 22, 0, 0), wake_up_time: Time.new(2023, 7, 2, 6, 30, 0))
+SleepRecord.create(user: user2, bed_time: Time.new(2023, 7, 1, 23, 30, 0), wake_up_time: Time.new(2023, 7, 2, 7, 0, 0))
+SleepRecord.create(user: user3, bed_time: Time.new(2023, 7, 1, 21, 0, 0), wake_up_time: Time.new(2023, 7, 2, 5, 30, 0))
+SleepRecord.create(user: user1, bed_time: Time.new(2023, 7, 2, 22, 30, 0), wake_up_time: Time.new(2023, 7, 3, 7, 30, 0))
+SleepRecord.create(user: user2, bed_time: Time.new(2023, 7, 2, 23, 0, 0), wake_up_time: Time.new(2023, 7, 3, 6, 0, 0))
+SleepRecord.create(user: user3, bed_time: Time.new(2023, 7, 2, 21, 30, 0), wake_up_time: Time.new(2023, 7, 3, 5, 0, 0))
+
+# Create follows
+user1.followers << user2
+user1.followers << user3
+user2.followers << user3
