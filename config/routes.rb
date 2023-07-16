@@ -9,6 +9,7 @@ Rails.application.routes.draw do
           delete :unfollow
         end
       end
+      resources :friend_sleep_records, only: [:show]
     end
   end
 end

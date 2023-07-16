@@ -10,4 +10,7 @@ FactoryBot.define do
     bed_time { 3.days.ago }
     wake_up_time { 3.days.ago + rand(1..12).hours }
   end
+
+  factory :follow do
+  end
 end

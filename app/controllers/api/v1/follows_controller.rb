@@ -3,7 +3,7 @@
 module Api
   module V1
     class FollowsController < ApiController
-      before_action :find_users, only: [:create, :unfollow]
+      before_action :find_users, only: %i[create unfollow]
 
       def create
         follow = Follow.new(user_id: @user.id, followed_user_id: @followed_user.id)

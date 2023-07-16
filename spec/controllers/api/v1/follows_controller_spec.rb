@@ -28,6 +28,17 @@ RSpec.describe Api::V1::FollowsController, type: :controller do
         expect(response).to have_http_status(:bad_request)
       end
     end
+
+    context 'when follow record already exists' do
+      before do
+        user.following_users << followed_user
+      end
+
+      it 'returns a bad request error' do
+        post :create, params: { user_id: user.id, followed_user_id: followed_user.id }
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
   end
 
   describe 'DELETE #unfollow' do
