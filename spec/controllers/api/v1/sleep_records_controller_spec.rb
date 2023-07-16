@@ -62,9 +62,9 @@ RSpec.describe Api::V1::SleepRecordsController, type: :controller do
         expect(response).to have_http_status(:success)
 
         parsed_response = JSON.parse(response.body)
-        expect(parsed_response['user_id']).to eq(user.id)
-        expect(parsed_response['bed_time']).not_to be_nil
-        expect(parsed_response['wake_up_time']).not_to be_nil
+        expect(parsed_response['id']).to eq(user.id)
+        expect(parsed_response['name']).to eq(user.name)
+        expect(parsed_response['sleep_records']).not_to be_empty
       end
     end
 
@@ -77,9 +77,9 @@ RSpec.describe Api::V1::SleepRecordsController, type: :controller do
         expect(response).to have_http_status(:success)
 
         parsed_response = JSON.parse(response.body)
-        expect(parsed_response['user_id']).to eq(user.id)
-        expect(parsed_response['bed_time']).not_to be_nil
-        expect(parsed_response['wake_up_time']).to be_nil
+        expect(parsed_response['id']).to eq(user.id)
+        expect(parsed_response['name']).to eq(user.name)
+        expect(parsed_response['sleep_records']).not_to be_empty
       end
     end
   end

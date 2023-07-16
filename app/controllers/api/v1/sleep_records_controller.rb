@@ -14,7 +14,7 @@ module Api
         sleep_record = @user.sleep_records.new(sleep_record_params)
 
         if sleep_record.save
-          render json: sleep_record
+          render json: @user, include: :sleep_records
         else
           render_400(sleep_record.errors.full_messages)
         end
@@ -22,8 +22,7 @@ module Api
 
       def track
         @user.is_sleeping? ? @user.wake_up : @user.go_sleep
-        sleep_record = @user.sleep_records.last
-        render json: sleep_record
+        render json: @user, include: :sleep_records
       end
 
       private
