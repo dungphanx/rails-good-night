@@ -14,6 +14,6 @@ SleepRecord.create(user: user2, bed_time: Time.new(2023, 7, 2, 23, 0, 0), wake_u
 SleepRecord.create(user: user3, bed_time: Time.new(2023, 7, 2, 21, 30, 0), wake_up_time: Time.new(2023, 7, 3, 5, 0, 0))
 
 # Create follows
-user1.followers << user2
-user1.followers << user3
-user2.followers << user3
+user1.following_users << user2
+user1.following_users << user3
+user2.following_users << user3
