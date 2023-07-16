@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,32 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_716_061_929) do
-  create_table 'follows', force: :cascade do |t|
-    t.integer 'user_id', null: false
-    t.integer 'followed_user_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['followed_user_id'], name: 'index_follows_on_followed_user_id'
-    t.index ['user_id'], name: 'index_follows_on_user_id'
+ActiveRecord::Schema[7.0].define(version: 2023_07_16_092024) do
+  create_table "follows", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "followed_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_user_id"], name: "index_follows_on_followed_user_id"
+    t.index ["user_id", "followed_user_id"], name: "index_follows_on_user_id_and_followed_user_id", unique: true
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
-  create_table 'sleep_records', force: :cascade do |t|
-    t.integer 'user_id', null: false
-    t.datetime 'bed_time'
-    t.datetime 'wake_up_time'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['user_id'], name: 'index_sleep_records_on_user_id'
+  create_table "sleep_records", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "bed_time"
+    t.datetime "wake_up_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sleep_records_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key 'follows', 'users'
-  add_foreign_key 'follows', 'users', column: 'followed_user_id'
-  add_foreign_key 'sleep_records', 'users'
+  add_foreign_key "follows", "users"
+  add_foreign_key "follows", "users", column: "followed_user_id"
+  add_foreign_key "sleep_records", "users"
 end
